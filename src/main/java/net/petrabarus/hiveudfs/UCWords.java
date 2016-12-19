@@ -1,10 +1,12 @@
 package net.petrabarus.hiveudfs;
 
 import org.apache.commons.lang.WordUtils;
+import org.apache.hadoop.hive.ql.exec.Description;
 import org.apache.hadoop.hive.ql.exec.UDFArgumentException;
 import org.apache.hadoop.hive.ql.exec.UDFArgumentLengthException;
 import org.apache.hadoop.hive.ql.exec.UDFArgumentTypeException;
 import org.apache.hadoop.hive.ql.metadata.HiveException;
+import org.apache.hadoop.hive.ql.udf.UDFType;
 import org.apache.hadoop.hive.ql.udf.generic.GenericUDF;
 import org.apache.hadoop.hive.serde2.objectinspector.ObjectInspector;
 import org.apache.hadoop.hive.serde2.objectinspector.ObjectInspectorConverters;
@@ -19,6 +21,14 @@ import org.apache.hadoop.io.Text;
  *
  * @author Petra Barus <petra.barus@gmail.com>
  */
+@UDFType(deterministic = true)
+@Description(
+		name = "ucwords",
+		value = "_FUNC_(s) - convert words in s to uppercase\n"
+				+ "Usage:\n"
+				+ " > _FUNC_(\"some words\")\n"
+				+ "See https://dev-jira.1and1.org/browse/MAMBISTATS-601"
+		)
 public class UCWords extends GenericUDF {
 
         private ObjectInspectorConverters.Converter converter;

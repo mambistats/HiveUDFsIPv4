@@ -49,11 +49,13 @@ import org.apache.hadoop.io.Text;
  */
 @UDFType(deterministic = true)
 @Description(
-        name = "LongToIP",
-value = "_FUNC_(iplong) - returns IP address in string format from long format",
-extended = "Example:\n"
-+ " > SELECT _FUNC_(16843009) FROM table"
-+ " > 1.1.1.1")
+		name = "LongToIP",
+		value = "_FUNC_(iplong) - returns IP address in string format from long format\n"
+				+ "See https://dev-jira.1and1.org/browse/MAMBISTATS-601",
+		extended = "Example:\n"
+				+ " > SELECT _FUNC_(16843009) FROM table\n"
+				+ " > 1.1.1.1"
+				)
 public class LongToIP extends GenericUDF {
 
         private ObjectInspectorConverters.Converter converter;

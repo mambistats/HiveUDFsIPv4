@@ -3,6 +3,8 @@ HiveUDFs
 
 My Personal Collection of Hive UDFs
 
+See https://maven.apache.org/plugins/maven-shade-plugin/ for Uber-JAR
+
 ## Compiling
 
 This is a Maven project. To compile it

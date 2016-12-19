@@ -29,11 +29,13 @@ import org.apache.hadoop.io.Text;
  */
 @UDFType(deterministic = true)
 @Description(
-        name = "SearchEngineKeyword",
-value = "_FUNC_(iplong) - returns keyword part from a search engine referrer URL",
-extended = "Example:\n"
-+ " > SELECT _FUNC_(\"http://www.google.com/search?q=keyword+keyword\") FROM table"
-+ " > keyword keyword")
+		name = "SearchEngineKeyword",
+		value = "_FUNC_(iplong) - returns keyword part from a search engine referrer URL\n"
+				+ "See https://dev-jira.1and1.org/browse/MAMBISTATS-601",
+		extended = "Example:\n"
+				+ " > SELECT _FUNC_(\"http://www.google.com/search?q=keyword+keyword\") FROM table\n"
+				+ " > keyword keyword"
+				)
 public class SearchEngineKeyword extends GenericUDF {
 
         private ObjectInspectorConverters.Converter converter;

@@ -62,12 +62,14 @@ import org.apache.hadoop.io.Text;
  */
 @UDFType(deterministic = true)
 @Description(
-  name = "geoip",
-value = "_FUNC_(ip,property,database) - looks a property for an IP address from"
-+ "a library loaded\n"
-+ "The GeoIP database comes separated. To load the GeoIP use ADD FILE.\n"
-+ "Usage:\n"
-+ " > _FUNC_(16843009, \"COUNTRY_NAME\", \"./GeoIP.dat\")")
+		name = "geoip",
+		value = "_FUNC_(ip,property,database) - looks a property for an IP address from"
+				+ " a library loaded\n"
+				+ "The GeoIP database comes separated. To load the GeoIP use ADD FILE.\n"
+				+ "Usage:\n"
+				+ " > _FUNC_(16843009, \"COUNTRY_NAME\", \"./GeoIP.dat\")\n"
+				+ "See https://dev-jira.1and1.org/browse/MAMBISTATS-601"
+		)
 public class GeoIP extends GenericUDF {
 
         public static final String COUNTRY_NAME = "COUNTRY_NAME";
