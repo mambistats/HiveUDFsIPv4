@@ -85,6 +85,7 @@ public class GeoIP extends GenericUDF {
         public static final String REGION_NAME = "REGION_NAME";
         public static final String ORG = "ORG";
         public static final String ID = "ID";
+        public static final String NETMASK = "NETMASK";
         private ObjectInspectorConverters.Converter[] converters;
         private static HashMap<String, LookupService> databases = new HashMap<String, LookupService>();
 
@@ -204,6 +205,8 @@ public class GeoIP extends GenericUDF {
                                 retVal = lookupService.getOrg(ip);
                         } else if (attributeName.equals(ID)) {
                                 retVal = lookupService.getID(ip) + "";
+                        } else if (attributeName.equals(NETMASK)) {
+                        		retVal = location.netmask + "";
                         }
                 } catch (Exception ex) {
                         //This will be useful if you don't have a complete database file.

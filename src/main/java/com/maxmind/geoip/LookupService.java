@@ -858,9 +858,11 @@ public class LookupService {
                 int str_length = 0;
                 int j, seek_country;
                 double latitude = 0, longitude = 0;
+                int netmask = 0;
 
                 try {
                         seek_country = seekCountry(ipnum);
+                        netmask = this.last_netmask();
                         if (seek_country == databaseSegments[0]) {
                                 return null;
                         }
@@ -936,6 +938,9 @@ public class LookupService {
                                         record.area_code = metroarea_combo % 1000;
                                 }
                         }
+                        
+                        record.netmask = netmask;
+                        
                 } catch (IOException e) {
                         System.err.println("IO Exception while seting up segments");
                 }
