@@ -86,8 +86,44 @@ public class GeoIP extends GenericUDF {
         public static final String ORG = "ORG";
         public static final String ID = "ID";
         public static final String NETMASK = "NETMASK";
+        public static final String PREFIX = "PREFIX";
         private ObjectInspectorConverters.Converter[] converters;
         private static HashMap<String, LookupService> databases = new HashMap<String, LookupService>();
+        private static long[] netmasks = {
+        		-1 << 32 -  0,
+        		-1 << 32 -  1,
+        		-1 << 32 -  2,
+        		-1 << 32 -  3,
+        		-1 << 32 -  4,
+        		-1 << 32 -  5,
+        		-1 << 32 -  6,
+        		-1 << 32 -  7,
+        		-1 << 32 -  8,
+        		-1 << 32 -  9,
+        		-1 << 32 - 10,
+        		-1 << 32 - 11,
+        		-1 << 32 - 12,
+        		-1 << 32 - 13,
+        		-1 << 32 - 14,
+        		-1 << 32 - 15,
+        		-1 << 32 - 16,
+        		-1 << 32 - 17,
+        		-1 << 32 - 18,
+        		-1 << 32 - 19,
+        		-1 << 32 - 20,
+        		-1 << 32 - 21,
+        		-1 << 32 - 22,
+        		-1 << 32 - 23,
+        		-1 << 32 - 24,
+        		-1 << 32 - 25,
+        		-1 << 32 - 26,
+        		-1 << 32 - 27,
+        		-1 << 32 - 28,
+        		-1 << 32 - 29,
+        		-1 << 32 - 30,
+        		-1 << 32 - 31,
+        		-1 << 32 - 32
+        };
 
         /**
          * Initialize this UDF.
@@ -207,6 +243,8 @@ public class GeoIP extends GenericUDF {
                                 retVal = lookupService.getID(ip) + "";
                         } else if (attributeName.equals(NETMASK)) {
                         		retVal = location.netmask + "";
+                        } else if (attributeName.equals(PREFIX)) {
+                        		retVal = (netmasks[location.netmask] & ip) + "";
                         }
                 } catch (Exception ex) {
                         //This will be useful if you don't have a complete database file.
